@@ -1,0 +1,10 @@
+products:
+  - name: Nintendo Switch 2
+    url: https://item.rakuten.co.jp/example/switch2/
+    siteType: rakuten
+  - name: Nintendo Switch 2
+    url: https://www.yodobashi.com/product/example/
+    siteType: yodobashi
+  - name: Nintendo Switch 2
+    url: https://store.nintendo.co.jp/example/
+    siteType: nintendo
