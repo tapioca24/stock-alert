@@ -1,4 +1,4 @@
-FROM node:24-alpine
+FROM mcr.microsoft.com/playwright:v1.59.1-noble
 WORKDIR /app
 RUN npm install -g pnpm
 COPY package.json pnpm-lock.yaml ./

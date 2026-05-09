@@ -1,11 +1,13 @@
 import type { Config } from './config.ts'
 import { createRakutenChecker } from './rakutenChecker.ts'
+import { createNintendoChecker } from './nintendoChecker.ts'
 import { startOrchestrator } from './orchestrator.ts'
 
 const STATE_PATH = 'data/state.json'
 
 export async function main(config: Config): Promise<void> {
   const rakutenChecker = createRakutenChecker(config.rakutenAppId)
+  const nintendoChecker = createNintendoChecker()
 
   console.log('ready')
   startOrchestrator({
@@ -14,6 +16,7 @@ export async function main(config: Config): Promise<void> {
     statePath: STATE_PATH,
     checker: async (product) => {
       if (product.siteType === 'rakuten') return rakutenChecker(product)
+      if (product.siteType === 'nintendo') return nintendoChecker(product)
       return 'unknown'
     },
     intervalSeconds: config.checkIntervalSeconds,
