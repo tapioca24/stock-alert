@@ -5,7 +5,4 @@ services:
       - path: .env
         required: false
     volumes:
-      - state-data:/app/data
-
-volumes:
-  state-data:
+      - ./data:/app/data

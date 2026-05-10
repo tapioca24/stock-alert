@@ -1,4 +1,5 @@
-import { readFile, writeFile } from 'node:fs/promises'
+import { readFile, writeFile, mkdir } from 'node:fs/promises'
+import { dirname } from 'node:path'
 import type { StockStatus } from './checker.ts'
 
 export type State = Record<string, StockStatus>
@@ -13,5 +14,6 @@ export async function loadState(filePath: string): Promise<State> {
 }
 
 export async function saveState(filePath: string, state: State): Promise<void> {
+  await mkdir(dirname(filePath), { recursive: true })
   await writeFile(filePath, JSON.stringify(state), 'utf-8')
 }

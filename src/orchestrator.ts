@@ -16,6 +16,7 @@ export async function runOnce(options: RunOnceOptions): Promise<void> {
 
   for (const product of products) {
     const newStatus = await checker(product)
+    console.log(`[check] ${product.name} (${product.url}) → ${newStatus}`)
     if (newStatus === 'unknown') continue
 
     const prevStatus = state[product.url]
@@ -25,6 +26,7 @@ export async function runOnce(options: RunOnceOptions): Promise<void> {
     }
 
     if (prevStatus !== newStatus) {
+      console.log(`[notify] ${product.name}: ${prevStatus} → ${newStatus}`)
       await sendNotification(webhookUrl, product, newStatus)
       state[product.url] = newStatus
     }
@@ -37,6 +39,7 @@ export function startOrchestrator(
   options: Omit<RunOnceOptions, 'checker'> & { checker: Checker; intervalSeconds: number },
 ): NodeJS.Timeout {
   const { intervalSeconds, ...runOptions } = options
+  runOnce(runOptions).catch(console.error)
   return setInterval(() => {
     runOnce(runOptions).catch(console.error)
   }, intervalSeconds * 1000)
