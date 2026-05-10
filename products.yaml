@@ -1,10 +1,10 @@
 products:
+  # - name: Nintendo Switch 2
+  #   url: https://item.rakuten.co.jp/example/switch2/
+  #   siteType: rakuten
+  # - name: Nintendo Switch 2
+  #   url: https://www.yodobashi.com/product/100000001009063421/
+  #   siteType: yodobashi
   - name: Nintendo Switch 2
-    url: https://item.rakuten.co.jp/example/switch2/
-    siteType: rakuten
-  - name: Nintendo Switch 2
-    url: https://www.yodobashi.com/product/example/
-    siteType: yodobashi
-  - name: Nintendo Switch 2
-    url: https://store.nintendo.co.jp/example/
+    url: https://store-jp.nintendo.com/item/hardware-accessory/VM_BEE_S_KB6CA
     siteType: nintendo
