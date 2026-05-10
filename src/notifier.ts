@@ -13,7 +13,7 @@ export async function sendNotification(
   product: Product,
   newStatus: StockStatus,
 ): Promise<void> {
-  const text = `[在庫アラート] ${product.name} (${product.siteType})\nステータス: ${newStatus}\nURL: ${product.url}`
+  const text = `<!channel> [在庫アラート] ${product.name} (${product.siteType})\nステータス: ${newStatus}\nURL: ${product.url}`
   const res = await fetch(webhookUrl, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
